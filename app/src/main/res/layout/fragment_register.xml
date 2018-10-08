@@ -1,0 +1,86 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    >
+
+    <EditText
+        android:id="@+id/et_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:maxLength="20"
+        android:hint="账号"
+        android:maxLines="1"
+        android:digits="@string/digits"
+        android:layout_gravity="center_horizontal"
+        android:textColorHint="#a3a3a3"
+        android:textColor="@color/app_text_color"
+        android:drawableBottom="@drawable/login_et_line"
+        android:drawablePadding="15dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginLeft="39dp"
+        android:layout_marginRight="39dp"
+        android:textSize="15sp"
+        android:textCursorDrawable="@drawable/cursor">
+    </EditText>
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:hint="密码（6—10位）"
+        android:inputType="textPassword"
+        android:maxLength="10"
+        android:maxLines="1"
+        android:layout_gravity="center_horizontal"
+        android:textColorHint="@color/color_a3"
+        android:textColor="@color/app_text_color"
+        android:drawableBottom="@drawable/login_et_line"
+        android:drawablePadding="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="39dp"
+        android:layout_marginRight="39dp"
+        android:textSize="15sp"
+        android:textCursorDrawable="@drawable/cursor">
+    </EditText>
+
+    <EditText
+        android:id="@+id/et_confirm_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:hint="确认密码（与密码一致）"
+        android:inputType="textPassword"
+        android:maxLength="10"
+        android:maxLines="1"
+        android:layout_gravity="center_horizontal"
+        android:textColorHint="@color/color_a3"
+        android:textColor="@color/app_text_color"
+        android:drawableBottom="@drawable/login_et_line"
+        android:drawablePadding="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="39dp"
+        android:layout_marginRight="39dp"
+        android:textSize="15sp"
+        android:textCursorDrawable="@drawable/cursor"/>
+
+    <TextView
+        android:id="@+id/tv_register"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/btn_bg"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:text="注册"
+        android:textColor="@color/white"
+        android:layout_marginTop="31dp"
+        android:layout_marginLeft="39dp"
+        android:layout_marginRight="39dp"
+        android:textSize="16sp" />
+
+</LinearLayout>
