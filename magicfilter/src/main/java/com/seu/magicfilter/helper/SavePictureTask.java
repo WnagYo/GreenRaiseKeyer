@@ -54,7 +54,7 @@ public class SavePictureTask extends AsyncTask<Bitmap, Integer, String>{
 			file.delete();
 		}
 		try {
-			bitmap = rotaingImageView(180,bitmap);
+//			bitmap = rotaingImageView(180,bitmap);
 			FileOutputStream out = new FileOutputStream(file);
 			bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
 			out.flush();

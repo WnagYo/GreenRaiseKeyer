@@ -224,11 +224,11 @@ public class MagicCameraView extends MagicBaseView {
         }
         CameraInfo info = CameraEngine.getCameraInfo();
         if (info.orientation == 90 || info.orientation == 270) {
-            imageWidth = info.previewHeight;
-            imageHeight = info.previewWidth;
+            imageWidth = info.pictureHeight;
+            imageHeight = info.pictureWidth;
         } else {
-            imageWidth = info.previewWidth;
-            imageHeight = info.previewHeight;
+            imageWidth = info.pictureWidth;
+            imageHeight = info.pictureHeight;
         }
         cameraInputFilter.onInputSizeChanged(imageWidth, imageHeight);
         adjustSize(info.orientation, info.isFront, true);
@@ -271,7 +271,6 @@ public class MagicCameraView extends MagicBaseView {
                     @Override
                     public void run() {
                         final Bitmap photo = drawPhoto(bitmap, CameraEngine.getCameraInfo().isFront);
-                        Log.e(TAG, "surfaceWidth:" + surfaceWidth + "\nsurfaceHeight:" + surfaceHeight);
                         //在onSurfaceChanged中设置设置视图窗口
                         GLES20.glViewport(0, 0, surfaceWidth, surfaceHeight);
                         if (photo != null) {
@@ -330,7 +329,7 @@ public class MagicCameraView extends MagicBaseView {
     private Bitmap drawPhoto(Bitmap bitmap, boolean isRotated) {
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
-        Log.e(TAG, "drawPhoto: " + "\nwidth:" + width + "\nheight:" + height);
+        Log.e(TAG, "\nwidth:" + width + "\nheight:" + height);
         int[] mFrameBuffers = new int[1];
         int[] mFrameBufferTextures = new int[1];
         if (beautyFilter == null) {
@@ -369,7 +368,7 @@ public class MagicCameraView extends MagicBaseView {
         FloatBuffer gLCubeBuffer = ByteBuffer.allocateDirect(TextureRotationUtil.CUBE.length * 4)
                 .order(ByteOrder.nativeOrder())
                 .asFloatBuffer();
-        FloatBuffer gLTextureBuffer = ByteBuffer.allocateDirect(TextureRotationUtil.TEXTURE_NO_ROTATION.length * 4)
+        FloatBuffer gLTextureBuffer = ByteBuffer.allocateDirect(TextureRotationUtil.TEXTURE_ROTATED_180.length * 4)
                 .order(ByteOrder.nativeOrder())
                 .asFloatBuffer();
         gLCubeBuffer.put(TextureRotationUtil.CUBE).position(0);
@@ -401,6 +400,8 @@ public class MagicCameraView extends MagicBaseView {
         beautyFilter.destroy();
         beautyFilter = null;
         if (filter != null) {
+            Log.e(TAG, "imageWidth: " + imageWidth + "\nimageHeight:" + imageHeight);
+            Log.e(TAG, "surfaceWidth:" + surfaceWidth + "\nsurfaceHeight:" + surfaceHeight);
             filter.onDisplaySizeChanged(surfaceWidth, surfaceHeight);
             filter.onInputSizeChanged(imageWidth, imageHeight);
         }
